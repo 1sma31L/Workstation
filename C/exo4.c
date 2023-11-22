@@ -8,7 +8,7 @@ void main() {
     while (i<=coloumns){
         for (j=1;j<=row;j++){
             result=j*i;
-            printf("%d X %d = %d\t",i,j,result );
+            printf("%d X %d = %d\t",j,i,result );
             }
     printf("\n");
     i++;}

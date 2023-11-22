@@ -1,38 +1,39 @@
 #include <stdio.h>
-int main()
-{
-    int arr1[100], n,ctr=0;
-    int i, j, k;
-       printf("\n\nPrint all unique elements of an array:\n");
-       printf("------------------------------------------\n");	
-       printf("Input the number of elements to be stored in the array: ");
-       scanf("%d",&n);
-       printf("Input %d elements in the array :\n",n);
-       for(i=0;i<n;i++)
-            {
-	      printf("element - %d : ",i);
-	      scanf("%d",&arr1[i]);
-	    }
 
-    printf("\nThe unique elements found in the array are: \n");
-    for(i=0; i<n; i++)
-    {
-        ctr=0;
-        for(j=0,k=n; j<k+1; j++)
-        {
-            /*Increment the counter when the seaarch value is duplicate.*/
-            if (i!=j)
-            {
-		        if(arr1[i]==arr1[j])
-                {
-                 ctr++;
-                }
+int main() {
+    int i, j, n;
+    printf("Enter the number of elements to be stored in the array: ");
+    scanf("%d", &n);
+    
+    int a[n];
+    
+    printf("Enter %d elements in this array\n", n);
+    for (i = 0; i < n; i++) {
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &a[i]);
+    }
+
+    // Find unique elements
+    int unique[n], t = 0;  // Initialize t to 0
+    for (i = 0; i < n; i++) {
+        int isUnique = 1;  // Assume a[i] is unique
+        for (j = 0; j < t; j++) {
+            if (a[i] == unique[j]) {
+                isUnique = 0;  // a[i] is not unique
+                break;
             }
         }
-        if(ctr==0)
-        {
-            printf("%d ",arr1[i]);
+        if (isUnique) {
+            unique[t] = a[i];
+            t++;
         }
     }
-    printf("\n\n");
+
+    printf("The unique elements found in the array are: ");
+    for (i = 0; i < t; i++) {
+        printf("%d ", unique[i]);
+    }
+    printf("\n");
+
+    return 0;
 }

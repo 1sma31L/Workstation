@@ -9,20 +9,24 @@ void main() {
         printf("Entre element %d : ",i);
         scanf("%d", &a[i]);
     }
-    int unique;
-    printf("The unique elements found in the array are: ");
+    int unique[n],t=1;
     for (i=1;i<=n;i++) {
-        unique=1;
         for (j = 1; j <= n; j++) {
             if (i!=j) {
-                if (a[i] == a[j]) {
-                    unique=0;
+                if (a[i] != a[j]) {
+                    unique[t]=a[i];
+                    t++;
                 }
             }
+            else {
+                unique[t]=a[i];
+                t++;
+            }
         }
-        if (unique) {
-            printf("%d ",a[i]);
-        }
+    }
+    printf("The unique elements found in the array are: ");
+    for (i=1;i<=t;i++) {
+        printf("%d ",unique[i]);
     }
     printf("\n");
 }
